@@ -3064,6 +3064,7 @@
 
 		return self;
 	};
+
 	jQuery.extend({
 
 		Deferred: function(func) {
@@ -3205,6 +3206,7 @@
 			return deferred.promise();
 		}
 	});
+
 	jQuery.support = (function(support) {
 		var input = document.createElement("input"),
 			fragment = document.createDocumentFragment(),
@@ -3679,6 +3681,7 @@
 		}
 		return data;
 	}
+
 	jQuery.extend({
 		queue: function(elem, type, data) {
 			var queue;
@@ -3743,8 +3746,7 @@
 				})
 			});
 		}
-	});
-
+	}); 
 	jQuery.fn.extend({
 		queue: function(type, data) {
 			var setter = 2;
@@ -3824,6 +3826,7 @@
 			return defer.promise(obj);
 		}
 	});
+
 	var nodeHook, boolHook,
 		rclass = /[\t\r\n\f]/g,
 		rreturn = /\r/g,
@@ -4326,6 +4329,8 @@
 			};
 		}
 	});
+
+
 	var rkeyEvent = /^key/,
 		rmouseEvent = /^(?:mouse|contextmenu)|click/,
 		rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
@@ -5162,6 +5167,8 @@
 			}
 		}
 	});
+
+
 	var isSimple = /^.[^:#\[\.,]*$/,
 		rparentsprev = /^(?:parents|prev(?:Until|All))/,
 		rneedsContext = jQuery.expr.match.needsContext,
@@ -6096,6 +6103,8 @@
 			}).end();
 		}
 	});
+
+
 	var curCSS, iframe,
 		// swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
 		// see here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
@@ -6666,7 +6675,8 @@
 		if (!rmargin.test(prefix)) {
 			jQuery.cssHooks[prefix + suffix].set = setPositiveNumber;
 		}
-	});
+	}); 
+
 	var r20 = /%20/g,
 		rbracket = /\[\]$/,
 		rCRLF = /\r?\n/g,
@@ -7915,6 +7925,8 @@
 			};
 		}
 	});
+
+
 	var fxNow, timerId,
 		rfxtypes = /^(?:toggle|show|hide)$/,
 		rfxnum = new RegExp("^(?:([+-])=|)(" + core_pnum + ")([a-z%]*)$", "i"),
@@ -8657,6 +8669,8 @@
 			}).length;
 		};
 	}
+
+
 	jQuery.fn.offset = function(options) {
 		if (arguments.length) {
 			return options === undefined ?
@@ -8882,6 +8896,7 @@
 	});
 	// Limit scope pollution from any deprecated API
 	// (function() {
+
 
 	// The number of elements contained in the matched element set
 	jQuery.fn.size = function() {
