@@ -39,16 +39,16 @@
 })()
 
 
-jQuery调用：
-$('div').css(); -- 扩展实例方法 【jQuery对象能用原生对象不能用】，较高级的方法
-$.trim(); -- 扩展静态（工具）方法 【jQuery对象和原生对象都可以用】，更底层的方法
-$.proxy(); -- 扩展静态（工具）方法 【jQuery对象和原生对象都可以用 
-【一般实例化方法里面都会调用静态方法】
+### jQuery调用：
+	$('div').css(); -- 扩展实例方法 【jQuery对象能用原生对象不能用】，较高级的方法
+	$.trim(); -- 扩展静态（工具）方法 【jQuery对象和原生对象都可以用】，更底层的方法
+	$.proxy(); -- 扩展静态（工具）方法 【jQuery对象和原生对象都可以用 
+	【一般实例化方法里面都会调用静态方法】
 
-示例：
-var arr = new new Array();
-arr.push();
-arr.sort();
+	示例：
+	var arr = new new Array();
+	arr.push();
+	arr.sort();
 
 ### 复杂选择其的实现
 $('ul li + p input[type="text"]').css();
