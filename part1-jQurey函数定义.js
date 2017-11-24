@@ -1,4 +1,5 @@
 (function(window,undefined){
+	
 	### 为啥传递函数的参数 window 
 	  1. 查找速度快，函数作用域
 	  2. 压缩后不会出错
@@ -44,6 +45,6 @@
 			jQuery.prototype.css = function(){ } 
 
 			jQuery.fn.init.prototype = jQuery.prototype;
-			
+
 			jQuery().css();
 })(window)
