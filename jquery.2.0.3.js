@@ -98,6 +98,7 @@
 		jquery: core_version,
 
 		constructor: jQuery,
+		
 		init: function(selector, context, rootjQuery) {
 			var match, elem;
 
