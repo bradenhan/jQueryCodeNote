@@ -6,9 +6,21 @@
         constructor :  修正正确指向
         init() : 初始化和参数管理
         selector ()  : 存储选择字符串
-        length : this对象的长度 （198行）
-        toArray() 
-    
+        length : this对象的长度 （201行）
+        toArray()  :  转数组
+        get() ： 转原生集合
+        pushStack() ：JQ对象入栈
+        each() ： 遍历集合
+        ready() ：DOM加载的接口
+        slice() ：集合的截取
+        first() ： 集合的第一项
+        last() ： 集合的最后一项
+        eq() ：
+        map() ： 对集合进行二次处理，返回一个新集合
+        end() ：回溯，找到栈的下一层 （prevObject方法）
+        push() ：JQ内部方法
+        sort() ：JQ内部方法
+        splice() ： JQ内部方法 
     }
 
 ### constructor :  修正修正正确指向      
@@ -104,6 +116,14 @@
     	 	title : 'hi',
     	 	html : 'ssss'
     	 }).appendTo('ul')
+    	 
+    	 rootjQuery = $(document);
+    	 $(document).find('div p');    find --> sizzle 里面方法
+    	 
+    	 
+    	 jQuery.makeArray
+    	 
+    	 
         	 
 ### this : 
         
@@ -114,6 +134,61 @@
             length : 3,
             ...  
         }
+        
+### toArray()  :  转数组 只能JQ对象
+    $(function(){
+    	var divs = $('div'); -> {0 : 'div',1:'div', length : 2}
+    	divs.toArray() ['div','div']
+    })
+
+ 
+### get() ： 转原生集合
+    $(function(){ 
+    	$('div').get(0).innerHTML = '2222'
+    	$('div').get()
+    	$('div').get(-1)
+    	for(var i = 0; i < $('div').get().length; i ++ ){
+    		$('div').get()[i].innerHTML = 'ssss'
+    	}
+    })
+
+### pushStack() ：JQ对象入栈
+    栈 ： 先进后出，后进先出
+    队列 ： 先进先出。后进后出
+    
+    $(function(){ 
+        $('div').pushStack($('span')).css('background' : 'red').css('background','black'); // span变红色
+        $('div').pushStack($('span')).css('background' : 'red').end().css('background','black'); // span变红色
+    })    
+     
+### each() ： 遍历集合 加强版的for循环
+### ready() ：DOM加载的接口
+### slice() ：集合的截取
+    $(function(){ 
+     	$('div').slice(1,3).css('background' , 'red');
+     	$('div').slice(1,4).css('background' , 'red').end().css('background' , 'black');
+    })
+
+### first() ： 集合的第一项 、   last() ： 集合的最后一项 、eq()
+     $(function(){ 
+     	$('div').first().css('background' , 'red');
+     	$('div').last().css('background' , 'black');
+     	$('div').eq(0).css('background' , 'red');
+     	$('div').eq(-1).css('background' , 'black');
+    }) 
+### map() 对集合进行二次处理，返回一个新集合
+    $(function(){ 
+     	 var arr = ['a','b','c','d'];
+     	 var arr2 = $.map(arr,function(elem,i){
+     	 	return (elem + i);
+     	 })
+     	 console.log(arr2)
+    })
+    
+     ["a0", "b1", "c2", "d3"]
+
+### end() 回溯，找到栈的下一层 （prevObject方法）
+
         
 
         
