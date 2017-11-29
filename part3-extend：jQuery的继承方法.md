@@ -83,6 +83,28 @@
             console.log(b.name.age); // 30
         })
 
-jQuery.extend = jQuery.fn.extend = function() {
+### jQuery.extend = jQuery.fn.extend = function() {}
+
+         jQuery.extend = jQuery.fn.extend = function() {
+            定义一些变量
+            if(typeof target === "boolean"){ // 看是不是深拷贝情况
+                 $.extend(true, a , b)
+            }
+            
+            if(typeof target !== "object" && !jQuery.isFunction(target)){ // 看参数是否正确
+            }
+            
+            if(typeof target === "boolean"){ // 看是不是插件情况
+            }
+            
+            312行 -  for(; i < length; i++){ //可能有多个对象的情况
+                if(target === copy){} // 放置循环
+                if(deep && copy && (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))){} // 深拷贝
+                else if (){} //浅拷贝        
+            }
     
-}
+        }
+
+
+- JQ中： 拷贝继承 
+- JS: 类式继承 / 原型继承

@@ -189,6 +189,10 @@
 
 ### end() 回溯，找到栈的下一层 （prevObject方法）
 
+### push() ：JQ内部方法
+### sort() ：JQ内部方法
+### splice() ： JQ内部方法 
+
         
 
         
