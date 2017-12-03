@@ -10,7 +10,10 @@
 
 [part3-extend：jQuery的继承方法](part3-extend：jQuery的继承方法.md)
 
+[part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend 扩展一些工具的方法.md)
 
+
+ 
 
 
 ### 附录：
