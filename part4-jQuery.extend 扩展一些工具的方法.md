@@ -21,13 +21,13 @@ jQuery.extend({ //扩展方法到jQuery身上
     parseXML() ： 解析XML
     noop() ： 空函数
     globalEval() ： 全局解析JS
-    camelCase() ： 转驼峰
-    nodeName()
+    camelCase() ： 转驼峰（内部）
+    nodeName() : 是否为制定节点名（内部）
     each()
     trim()
-    makeArray()
-    inArray()
-    merge()
+    makeArray() 类数组转换成真正数组
+    inArray() 数组版的indexOf
+    merge() 合并数组
     grep()
     map()
     guid
@@ -316,3 +316,263 @@ window.onload = function(){} //等所有节点（DOM图片等）都加载完才�
     Aaa.prototype.init = function(opt){
     	$.extend(this.default , opt )
     };
+
+### globalEval() 全局解析JS
+
+    globalEval: function(code) {
+		var script,
+			indirect = eval;
+
+		code = jQuery.trim(code);
+
+		if (code) { 
+			if (code.indexOf("use strict") === 1) {
+				script = document.createElement("script");
+				script.text = code;
+				document.head.appendChild(script).parentNode.removeChild(script);
+			} else { 				
+			     indirect(code);
+			}
+		}
+	},
+
+
+    function test(){
+        jQuery.globalEval("var newVar = true;")
+        
+        // eval("var newVar = true;") 也可以
+    }
+    test();
+    // newVar === true
+
+### camelCase() 转驼峰 （内部）
+
+    camelCase: function(string) {
+		return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
+	},
+    
+    // 子项
+    rmsPrefix = /^-ms-/,
+	rdashAlpha = /-([\da-z])/gi,
+    
+    fcamelCase = function(all, letter) {
+		return letter.toUpperCase();
+	},
+    
+    $(function(){  
+        $.camelCase('sss-html')
+    })
+
+### nodeName（）是否为制定节点名（内部）
+
+    nodeName: function(elem, name) {
+		return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+    },
+    
+    
+    $(function(){ 
+    	$.nodeName(document.documentElement,'html')
+    })
+    
+### each() 遍历集合
+    each: function(obj, callback, args) { // args 内部变量
+		var value,
+			i = 0,
+			length = obj.length,
+			isArray = isArraylike(obj);
+
+		if (args) {
+			if (isArray) {
+				for (; i < length; i++) {
+					value = callback.apply(obj[i], args);
+
+					if (value === false) {
+						break;
+					}
+				}
+			} else {
+				for (i in obj) {
+					value = callback.apply(obj[i], args);
+
+					if (value === false) {
+						break;
+					}
+				}
+			}
+
+			// A special, fast, case for the most common use of each
+		} else {
+			if (isArray) {
+				for (; i < length; i++) {
+					value = callback.call(obj[i], i, obj[i]);
+
+					if (value === false) {
+						break;
+					}
+				}
+			} else {
+				for (i in obj) {
+					value = callback.call(obj[i], i, obj[i]);
+
+					if (value === false) {
+						break;
+					}
+				}
+			}
+		}
+
+		return obj;
+	},
+
+    $(function(){ 
+    	var arr = ['a','c','v','d'];
+    	var json = {'name':'sss','asss' : 'sss'}
+    
+    	$.each(arr ,function(i,value){
+    		console.log(i,value)
+    	})
+    
+    	$.each(json ,function(i,value){
+    		console.log(i,value)
+    	})
+    })
+
+### makeArray() 类数组转换成真正数组 
+
+    var oDiv = document.getElementsByTagName('div');
+	 var str = 'hello';
+	 var json = {'name':'ssss','age': 'sss'}
+	 console.log($.makeArray(oDiv)); ==> [div#div1, div, div, div]
+	 console.log($.makeArray(str)); ==> ["hello"]
+	 console.log($.makeArray(json)); ==> [{name: "ssss", age: "sss"}]
+
+
+
+### inArray() 数组版的indexOf
+
+    inArray: function(elem, arr, i) {
+    return arr == null ? -1 : core_indexOf.call(arr, elem, i);
+		},
+		
+    $(function(){ 
+    	var arr = ['a','c','v','d']; 
+    	$.inArray('a',arr) ==> 0
+    })
+
+### merge()合并数组
+    merge: function(first, second) {
+    	var l = second.length,
+    		i = first.length,
+    		j = 0;
+    
+    	if (typeof l === "number") {
+    		for (; j < l; j++) {
+    			first[i++] = second[j];
+    		}
+    	} else {
+    		while (second[j] !== undefined) {
+    			first[i++] = second[j++];
+    		}
+    	}
+    
+    	first.length = i;
+    
+    	return first;
+    },
+    
+    $(function(){ 
+    	var arr = ['a','c','v','d']; 
+    	var json = {0:'sss',1 : 'sss'} 
+    	var newArr = $.merge(arr,json)
+    })
+    
+### grep() 过滤得到新数组，愿数组不变
+
+    grep: function(elems, callback, inv) {
+		var retVal,
+			ret = [],
+			i = 0,
+			length = elems.length;
+		inv = !!inv;
+ 
+		for (; i < length; i++) {
+			retVal = !!callback(elems[i], i);
+			if (inv !== retVal) {
+				ret.push(elems[i]);
+			}
+		}
+
+		return ret;
+	},
+	
+
+    $(function(){ 
+    	var arr = [ 1, 9 ];
+    	arr = $.grep(arr, function(n, i){
+    	  return (n >= 5);
+    	});  ==> [9]
+    	
+    	var arr = [ 1, 9 ];
+    	arr = $.grep(arr, function(n, i){
+    	  return (n >= 5); 
+    	},true); ==> [1]
+    })
+
+### map() 映射新数组
+    
+    // arg is for internal usage only
+	map: function(elems, callback, arg) {
+		var value,
+			i = 0,
+			length = elems.length,
+			isArray = isArraylike(elems),
+			ret = [];
+
+		// Go through the array, translating each of the items to their
+		if (isArray) {
+			for (; i < length; i++) {
+				value = callback(elems[i], i, arg);
+
+				if (value != null) {
+					ret[ret.length] = value;
+				}
+			}
+
+			// Go through every key on the object,
+		} else {
+			for (i in elems) {
+				value = callback(elems[i], i, arg);
+
+				if (value != null) {
+					ret[ret.length] = value;
+				}
+			}
+		}
+
+		// Flatten any nested arrays
+		return core_concat.apply([], ret);
+	},
+	
+
+    $(function(){ 
+    	var arr = [ 1, 9, 3];
+    	arr = $.map(arr, function(i){
+    	  return i + 1;
+    	});  ==> [2, 10, 4]
+    })
+
+### guid 唯一标识符 （内部）
+
+
+### proxy() 改变this指向
+    
+    
+
+    var obj = {
+        name: "John",
+        test: function() {
+          alert(this)
+        }
+      };
+     
+    $(document).on( "click", $.proxy( obj, "test" ) );
