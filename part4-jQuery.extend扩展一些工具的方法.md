@@ -33,8 +33,8 @@ jQuery.extend({ //扩展方法到jQuery身上
     guid
     proxy()
     access()
-    now
-    swap()  
+    now()
+    swap() CSS交换（内部）  
     
 })
 
@@ -574,5 +574,33 @@ window.onload = function(){} //等所有节点（DOM图片等）都加载完才�
           alert(this)
         }
       };
-     
+    
+     $(document).on( "click", $.proxy( obj.test, obj) );
     $(document).on( "click", $.proxy( obj, "test" ) );
+    
+    $(function(){ 
+    	function show(){ 
+    		alert(this)
+    	}  
+    	
+    	$('div').eq(0).click($.proxy(show , window))
+    })
+
+### access() 设置多功能值操作 （内部）
+
+    $().css() $().attr() 
+    
+    $('div').css({width: '200px',height: '400px'})
+
+### now() 当前时间
+
+    $.now(); ==> 1512484915352
+    
+### swap() CSS交换（内部）
+
+
+### jQuery.ready.promise = function(obj) {}
+
+### function isArraylike(obj) {}
+
+### rootjQuery = jQuery(document);

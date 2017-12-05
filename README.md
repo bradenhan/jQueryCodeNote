@@ -12,7 +12,9 @@
 
 [part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend扩展一些工具的方法.md) 
 
+[part5-Sizzle复杂选择其的实现](part5-Sizzle复杂选择其的实现.md)
 
+[part5-Callbacks:回调对象--对函数的统一管理](part5-Callbacks:回调对象--对函数的统一管理.md)
  
 
 
