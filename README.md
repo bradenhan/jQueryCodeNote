@@ -8,9 +8,9 @@
 
 [part2-jQuery添加常用属性方法](part2-jQuery添加常用属性方法.md)
 
-[part3-extend：jQuery的继承方法](part3-extend：jQuery的继承方法.md) 
+[part3-extend：jQuery的继承方法](part3-extend：jQuery的继承方法.md)
 
-[part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend 扩展一些工具的方法.md)
+[part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend扩展一些工具的方法.md) 
 
 
  
