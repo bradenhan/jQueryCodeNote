@@ -16,7 +16,7 @@
 
 [part6-Callbacks:回调对象--对函数的统一管理](part6-Callbacks:回调对象--对函数的统一管理.md)
 
-[part7-Deferred-延迟对象-对异步的统一管理 (定时器、ajax)](part7-Deferred-延迟对象-对异步的统一管理-定时器、ajax.md)
+[part7-Deferred-延迟对象-对异步的统一管理 (定时器、ajax)](part7-Deferred-延迟对象-对异步的统一管理定时器、ajax.md)
  
 
 
