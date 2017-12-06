@@ -14,7 +14,9 @@
 
 [part5-Sizzle复杂选择其的实现](part5-Sizzle复杂选择其的实现.md)
 
-[part5-Callbacks:回调对象--对函数的统一管理](part5-Callbacks:回调对象--对函数的统一管理.md)
+[part6-Callbacks:回调对象--对函数的统一管理](part6-Callbacks:回调对象--对函数的统一管理.md)
+
+[part7-Deferred-延迟对象-对异步的统一管理 (定时器、ajax)](part7-Deferred-延迟对象-对异步的统一管理 (定时器、ajax).md)
  
 
 
