@@ -1,6 +1,6 @@
 # part7-Deferred-延迟对象-对异步的统一管理 (定时器、ajax)
 
-### Deferred 主要方法
+## Deferred 主要方法
 
 - deferred.always() 
   当Deferred（延迟）对象解决或拒绝时，调用添加处理程序。
@@ -253,3 +253,62 @@
 
 - call()方法
   function.call(thisObj[, arg1[, arg2[, [,...argN]]]]);
+
+## when 主要方法
+
+**使用**
+
+    $.when().done(); //参数一定得是延迟对象，否则会有问题
+    
+    $.when( { testing: 123 } ).done(
+        function(x) { alert(x.testing); } /* alerts "123" */
+    );
+    
+    $.when( $.ajax("test.aspx") ).then(function(data, textStatus, jqXHR){
+        alert( jqXHR.status ); // alerts 200
+    });
+
+** when 和 Deferred 的 区别：**
+
+    var dfd = $.Deferred();
+    dfd.done(); //对一个延迟对象
+    
+    $.when().done(); // 对多个延迟对象
+
+.
+
+    function aaa(){
+    	var dfd = $.Deferred();
+    	dfd.resolve();
+    	return dfd;
+    }
+    
+    aaa().done(function(){
+    	alert('成功');
+    });
+    结果： ---> 成功
+    --------------------- 
+    
+    function aaa(){
+    	var dfd = $.Deferred();
+    	dfd.resolve(); // 完成
+    	return dfd;
+    }  
+    
+    function bbb(){
+    	var dfd = $.Deferred();
+    	dfd.reject(); //失败
+    	return dfd;
+    }
+    
+    $.when( aaa() , bbb() ).done(function(){
+    	alert('成功');
+    }).fail(function(){
+    	alert('失败');
+    });
+    
+    结果： ---> 失败
+
+when()源码解析图：
+
+![](./images/Jietu20171207-222334@2x.jpg)
