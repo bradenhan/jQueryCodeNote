@@ -1,4 +1,4 @@
-## part5-Callbacks:回调对象--对函数的统一管理.md
+## part6-Callbacks:回调对象--对函数的统一管理.md
 
     jQuery.Callbacks = function(options) {
         once 只执行一次
