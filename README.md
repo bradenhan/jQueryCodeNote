@@ -10,7 +10,7 @@
 
 [part3-extend：jQuery的继承方法](part3-extend：jQuery的继承方法.md)
 
-[part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend扩展一些工具的方法.md) 
+[part4-jQuery.extend 扩展一些工具的方法](part4-jQuery.extend扩展一些工具的方法.md)
 
 [part5-Sizzle复杂选择其的实现](part5-Sizzle复杂选择其的实现.md)
 
@@ -20,6 +20,7 @@
 
 [part8-Support-功能检测](part8-support-功能检测.md)
 
+[part9-data数据缓存](part9-data数据缓存.md)
 
 ### 附录：
 
