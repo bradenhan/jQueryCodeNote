@@ -98,3 +98,25 @@ Data.prototype = {
 最终流程图：
 
 ![](./images/Jietu20171208-233555@2x.jpg)
+
+例子：
+
+    var obj = {
+  		name : "hello"
+  	}
+
+  	Object.freeze(obj) // 禁止修改对象的属性
+
+    Object.defineProperty(obj, 0, { // jQuery源码方法
+  		get: function() {
+  			return {};
+  		}
+  	});
+
+  	obj.name = "ss"
+  	console.log(obj.name)
+    结果：
+    hello
+
+    $.removeData(document.body , ['nage','age'])
+    $.removeData(document.body , 'nage')
