@@ -120,3 +120,37 @@ Data.prototype = {
 
     $.removeData(document.body , ['nage','age'])
     $.removeData(document.body , 'nage')
+
+
+jQuery思想：  
+对于一组元素进行设置操作，会设置一组中所有元素，
+对于一组元素中进行获取操作，好多方法只会获取第一个元素。
+
+    jQuery.fn.extend({
+        data:
+        removeData:
+    });
+
+
+
+#### dataset HTML5属性
+
+    <div id="div1"
+      data-miaov-all="妙味"
+      class="box"
+      title="123"
+    >aaaa</div>
+
+    alert($('#div1').get(0).dataset.miaovAll);
+
+--------------
+
+    $('#div1').data('nameAge','hi');
+  	$('#div1').data('name-age','hello');
+
+  	this.cache = {
+  		1 : {
+  			'nameAge' : 'hello',
+  			'name-age' : 'hello'
+  		}
+  	}
