@@ -3840,7 +3840,7 @@
 
 		removeAttr: function(name) {
 			return this.each(function() {
-				jQuery.removeAttr(this, name);
+				j his, name);
 			});
 		},
 
