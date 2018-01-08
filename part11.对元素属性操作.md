@@ -1,4 +1,4 @@
-# part11.对元素属性操作.md
+# part11.对元素属性操作
 
 jQuery.fn.extend({
 
@@ -84,3 +84,17 @@ jQuery.extend({
 	  $('#div1').toggleClass(true);
 
 #### val
+
+		// 在下拉列表中获取所选选项的值
+		$( "select#foo option:checked" ).val();
+
+		// 直接从下拉列表中选择值
+		$( "select#foo" ).val();
+
+		// 从复选框获取选中值
+		$( "input[type=checkbox][name=bar]:checked" ).val();
+
+		// 从一组单选按钮获取选中值
+		$( "input[type=radio][name=baz]:checked" ).val();
+
+> valHooks : option select radio checkbox
