@@ -55,9 +55,12 @@ jQuery.fn.extend({
   				// Use same guid so caller can remove using origFn
   				fn.guid = origFn.guid || (origFn.guid = jQuery.guid++);
   			}
+
+        // 注意此处
   			return this.each(function() {
   				jQuery.event.add(this, types, fn, data, selector);
   			});
+
   		},
 })
 
@@ -102,8 +105,20 @@ jQuery.fn.extend({
     		$(this).css('background','red');
     	});
 
+#### 详细讲解
 
-### bind/unbind
+##### 1. 第一个参数是对象
+
+    $('#div1').on({
+  		'click' : function(){
+  			alert(123);
+  		},
+  		'mouseover' : function(){
+  			alert(456);
+  		}
+  	});
+
+### bind/unbind  – 调用on()/off()
 
 ### 源码
 jQuery.fn.extend({
@@ -120,3 +135,17 @@ jQuery.fn.extend({
 **解析：**
 - 调用的on，但是没有委托形式
 - 老式写法，现在基本很少用
+
+### on --  事件只执行一次
+
+**源码**
+
+    one: function(types, selector, data, fn) {
+    	return this.on(types, selector, data, fn, 1);
+    },
+
+**使用**
+
+    $('#div1').one('click',function(){
+    		alert(123);
+    });

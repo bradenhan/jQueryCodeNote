@@ -60,6 +60,7 @@ function add(obj,types,fn){
 	obj.listeners = obj.listeners || {};
 	obj.listeners[types] = obj.listeners[types] || [];
 	obj.listeners[types].push(fn);
+	console.log(obj.listeners)
 	
 	obj.addEventListener(types,fn,false);
 }
