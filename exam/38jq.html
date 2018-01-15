@@ -8,11 +8,14 @@
 
 $(function(){
 	
-	$('#div1').on('click',function(a){
+	$('#div1').on('mouseenter',function(a){
 		alert(1);
 	});
-	$('#div1').on('click',function(b){
+	$('#div1').on('click.bbb',function(b){
 		alert(2);
+	});
+	$('#div1').on('click','span',function(c){
+		alert(4);
 	});
 	$('#div1').on('click','span:first',function(c){
 		alert(4);

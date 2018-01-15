@@ -82,7 +82,7 @@
         // 此处思想很重要
       	obj.listeners = obj.listeners || {};
       	obj.listeners[types] = obj.listeners[types] || [];
-      	obj.listeners[types].push(fn); 
+      	obj.listeners[types].push(fn);
 
       	obj.addEventListener(types,fn,false);
       }
@@ -98,3 +98,52 @@
       		arr[i]();
       	}
       }
+![](../images/Jietu20180115-233513@2x.jpg)
+
+
+      $('#div1').on('click',function(a){
+      	alert(1);
+      });
+      $('#div1').on('click',function(b){
+      alert(2);
+      });
+      $('#div1').on('tap',function(){
+      	alert(3);
+      });
+
+![](../images/Jietu20180115-234809@2x.jpg)
+
+![](../images/Jietu20180115-235056@2x.jpg)
+
+    var elemData = {
+    		events : {
+    			'click' : [      //arr  arr.delegateCount 委托的个数  arr.length = 2
+    				{},   //委托的(会放到前面),
+    				{
+    					data: undefined, //表示数据为为定义
+    					guid: 3, // 当前事件的唯一表识
+    					handler: function (){},// 绑定的函数
+    					namespace: "", //命名空间
+    					needsContext: undefined,
+              //needsContext --- 有委托则为true（伪类情况‘:’）false(没有伪类情况)，没有委托则为undefined
+    					origType: "click", //原始事件类型,
+    					selector: "span",
+    					type: "click" //真正事件类型
+    				},
+    				{}
+    			],
+    			'mouseover' : [
+    				{}
+    			]
+    		},
+    		handle : function(e){} //真正的事件函数
+    	};
+
+- #### namespace
+![](../images/Jietu20180116-000319.jpg)
+
+- #### needsContext
+![](../images/Jietu20180116-000918.jpg)
+
+- #### origType VS type
+![](../images/Jietu20180116-001338.jpg)
