@@ -50,3 +50,4 @@
 - [part2.on事件](part2.on事件.md)
 - [part3.off事件](part3.off事件.md)
 - [part4.add-remove-trigger详解](part4.add-remove-trigger详解.md)
+- [part5.dispatch-详解](dispatch-详解.md)

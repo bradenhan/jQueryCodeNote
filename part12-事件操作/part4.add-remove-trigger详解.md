@@ -147,3 +147,16 @@
 
 - #### origType VS type
 ![](../images/Jietu20180116-001338.jpg)
+
+    $('#div1').on('click',function(b){
+    	alert(2);
+    });
+
+    $('#div1').on('click.bbb',function(b){
+    	alert(2);
+    });
+
+    $('#div1').trigger('click.bbb'); ==> 2
+
+
+![](../images/Jietu20180117-231454@2x.jpg)
